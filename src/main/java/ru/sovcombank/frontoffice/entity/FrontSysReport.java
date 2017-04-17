@@ -1,5 +1,7 @@
 package ru.sovcombank.frontoffice.entity;
 
+import org.springframework.context.annotation.Lazy;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -39,6 +41,10 @@ public class FrontSysReport {
     @Column(name = "RE_RPT_SCR")
     private String re_rpt_scr;
 
+    @Basic(fetch = FetchType.LAZY)
+    @Column(name = "RE_RPT_TPL")
+    @Lob()
+    private byte[] re_rpt_tpl;
 
     public FrontSysReport() {
     }
@@ -126,5 +132,17 @@ public class FrontSysReport {
 
     public void setRe_changed(Date re_changed) {
         this.re_changed = re_changed;
+    }
+
+    public void setRe_rpt_scr(String re_rpt_scr) {
+        this.re_rpt_scr = re_rpt_scr;
+    }
+
+    public byte[] getRe_rpt_tpl() {
+        return re_rpt_tpl;
+    }
+
+    public void setRe_rpt_tpl(byte[] re_rpt_tpl) {
+        this.re_rpt_tpl = re_rpt_tpl;
     }
 }
