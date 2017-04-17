@@ -88,8 +88,8 @@ public class VaadinUI extends UI implements Button.ClickListener {
                                 }
                                 TextDocument report = TextDocument.loadDocument(inputStream);
                                 Binding binding = new Binding();
-                                binding.setProperty("reportTemplate", report);
-                                groovyScriptEngine.run(sf.getName(), binding);
+                                groovyScriptEngine.createScript(sf.getName(), binding).invokeMethod("doFillTemplate", report);
+                                //groovyScriptEngine.run(sf.getName(), binding);
                                 report.save(outputStream);
                             } else {
                                 outputStream.write(inputStream);
